@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Conflictos laborales</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding >
+        <h1 text-center>Conflictos</h1>
+      <ion-list>
+        <form #form="ngForm" (ngSubmit)="saveData(form)" novalidate>
+          <ion-item>
+              <ion-label>Fecha de suceso:</ion-label>
+                <ion-datetime [(ngModel)]="conflicto.fecha" name="fecha" display-format="DD/MM/YYYY" picker-format="DDDD MMMM YYYY"></ion-datetime>
+              </ion-item>
+  
+        <ion-item>
+          <ion-label>Motivo</ion-label> 
+          <ion-select [(ngModel)]="conflicto.motivo" name="motivo"  ngModel (ngModelChange)='somethingChanged($event)' value="Defensa de puestos de trabajo" okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="Defensa de puestos de trabajo">Defensa de puestos de trabajo</ion-select-option>
+            <ion-select-option value="Reclamo salarial">Reclamo salarial</ion-select-option>
+            <ion-select-option value="Registración (“blanqueo”)">Registración (“blanqueo”)</ion-select-option>
+            <ion-select-option value="Quiebra, venta o cierre de la empresa">Quiebra, venta o cierre de la empresa</ion-select-option>
+            <ion-select-option value="Condiciones de seguridad, higiene y salud laboral">Condiciones de seguridad, higiene y salud laboral</ion-select-option>
+            <ion-select-option value="Reestructuración">Reestructuración</ion-select-option>
+            <ion-select-option value="Aplicación del CCT 260/75 o LCT 23551">Aplicación del CCT 260/75 o LCT 23551 </ion-select-option>
+            <ion-select-option value="Representación sindical">Representación sindical</ion-select-option>
+            <ion-select-option value="Cambio de categoría">Cambio de categoría</ion-select-option>
+            <ion-select-option value="Otros motivos de conflictos">Otros motivos de conflictos </ion-select-option>
+          </ion-select>
+        </ion-item>
+           <ion-item>
+            <ion-label>Medida</ion-label>
+            <ion-select [(ngModel)]="conflicto.medida" name="medida" value=" Reunión con encargado" okText="Okay" cancelText="Dismiss">
+              <ion-select-option value="Reunión con el encargado ">Reunión con encargado </ion-select-option>
+              <ion-select-option value="Denuncia ante el Ministerio">Denuncia ante el Ministerio</ion-select-option>
+              <ion-select-option value="Audiencia de conciliación">Audiencia de conciliación</ion-select-option>
+              <ion-select-option value="Conciliación obligatoria">Conciliación obligatoria</ion-select-option>
+              <ion-select-option value="Bajar la producción/trabajo a reglamento">Bajar la producción/trabajo a reglamento</ion-select-option>
+              <ion-select-option value="Asamblea informativa">Asamblea informativa</ion-select-option>
+              <ion-select-option value="Asamblea permanente">Asamblea permanente</ion-select-option>
+              <ion-select-option value="Movilización">Movilización</ion-select-option>
+              <ion-select-option value="Otro tipo de acción gremial ">Otro tipo de acción gremial </ion-select-option>
+            </ion-select>
+          </ion-item>
+      
+
+                
+  
+          <ion-item>
+            <ion-label class="alto" position="floating">Observaciones</ion-label>
+            <ion-textarea [(ngModel)]="conflicto.observacion" name="observacion" ></ion-textarea>
+          </ion-item>
+  
+          <ion-button expand="block"  fill="outline" type="submit">Confirmar </ion-button>
+
+          </form>
+        </ion-list> 
+        
+  </ion-content>
+  

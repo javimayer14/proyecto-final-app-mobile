@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Variaciones en el empleo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <h1 text-center>Altas</h1>
+    <ion-list>
+      <form #form="ngForm" (ngSubmit)="saveData(form)" novalidate>
+          <ion-item>
+              <ion-label>Fecha de suceso:</ion-label>
+              <ion-datetime [(ngModel)]="altas.fecha" name="fecha" display-format="DD/MM/YYYY" picker-format="DDDD MMMM YYYY"></ion-datetime>
+            </ion-item>
+        <ion-item>
+         <ion-label>Contrato</ion-label>
+         <ion-select [(ngModel)]="altas.contrato" name="contrato" value="Directos/as" okText="Okay" cancelText="Dismiss">
+           <ion-select-option value="Sub contratados/as">Sub contratados/as</ion-select-option>
+           <ion-select-option value="Pasantia/Beca">Pasantia/Beca</ion-select-option>
+           <ion-select-option value="Monotributistas">Monotributistas</ion-select-option>
+           <ion-select-option value="Subvencionados/as">Subvencionados/as</ion-select-option>
+           <ion-select-option value="Temporarios/as">Temporarios/as</ion-select-option>
+           <ion-select-option value="Terciarizados/as">Terciarizados/as</ion-select-option>
+           <ion-select-option value="Por agencia">Por agencia</ion-select-option>
+           <ion-select-option value="Personas con discapacidad">Personas con discapacidad</ion-select-option>
+           <ion-select-option value="En negro">En negro</ion-select-option>
+         </ion-select>
+       </ion-item>
+             <ion-item>
+        <ion-label>Cantidad</ion-label>
+        <ion-select [(ngModel)]="altas.cantidad" name="cantidad" value="brown" okText="Okay" cancelText="Dismiss">
+          <ion-select-option *ngFor="let x of range"  [value]="x">{{x}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+         <ion-radio-group [(ngModel)]="altas.tipoIngreso" name="tipoIngreso" >
+           <hr>
+            <ion-list-header>
+             <p>tipo de ingreso:</p> 
+            </ion-list-header>
+         
+            <ion-item>
+              <ion-label>Incorporacion</ion-label>
+              <ion-radio value="Incorporacion"></ion-radio>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label>Reincorporacion</ion-label>
+              <ion-radio value="Reincorporacion"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+         <ion-item>
+            <ion-label class="alto" position="floating">Observaciones</ion-label>
+            <ion-textarea [(ngModel)]="altas.observacion" name = "observacion" ></ion-textarea>
+          </ion-item>
+  
+          <ion-button  color="green" expand="block"  fill="outline" type="submit" >Confirmar</ion-button>
+        </form>
+    </ion-list>
+    
+</ion-content>

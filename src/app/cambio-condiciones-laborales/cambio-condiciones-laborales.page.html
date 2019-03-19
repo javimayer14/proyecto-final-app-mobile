@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Cambios en condiciones laborales</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding >
+        <h1 text-center>Cambios laborales</h1>
+      <ion-list>
+          <form #form="ngForm" (ngSubmit)="saveData(form)" novalidate>
+              <ion-item>
+                  <ion-label>Fecha de suceso:</ion-label>
+                  <ion-datetime [(ngModel)]="cambio.fecha" name="fecha" display-format="DD/MM/YYYY" picker-format="DDDD MMMM YYYY"></ion-datetime>
+                </ion-item>
+           <ion-item>
+            <ion-label>Cambio respecto a:</ion-label>
+            <ion-select [(ngModel)]="cambio.cambio_a" name="cambio_a" value="brown" okText="Okay"  ngModel (ngModelChange)='somethingChanged($event)' okText="Okay" cancelText="Dismiss">
+              <ion-select-option value="Problemas en los pagos">Problemas en los pagos</ion-select-option>
+              <ion-select-option value="Jornada de trabajo">Jornada de trabajo</ion-select-option>
+              <ion-select-option value="Variaciones sobre la forma de trabajo">Variaciones sobre la forma de trabajo</ion-select-option>
+              <ion-select-option value="Salud y seguridad en el trabajo">Salud y seguridad en el trabajo</ion-select-option>
+              <ion-select-option value="Vínculos en el trabajo">Vínculos en el trabajo</ion-select-option>
+              <ion-select-option value="Logros y beneficios">Logros y beneficios</ion-select-option>
+            </ion-select>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>sub indice</ion-label>
+            <ion-select   [(ngModel)]="cambio.cambio_suba" name="cambio_suba" value="brown" okText="Okay" cancelText="Dismiss">
+              <ion-select-option *ngFor="let x of subSelect" [value]="x">{{x}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+                
+  
+          <ion-item>
+            <ion-label class="alto" position="floating">Observaciones</ion-label>
+            <ion-textarea  [(ngModel)]="cambio.observacion" name="observacion"></ion-textarea>
+          </ion-item>
+  
+          <ion-button  expand="block"  fill="outline" type="submit">Confirmar</ion-button>
+    
+    
+        </form>
+        </ion-list>
+       
+          
+  </ion-content>
+  

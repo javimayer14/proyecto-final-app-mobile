@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Variaciones en el empleo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h1 text-center>Suspenciones</h1>
+  <ion-list>
+    <form #form="ngForm" (ngSubmit)="saveData(form)" novalidate>
+      <ion-item>
+        <ion-label>Fecha de suceso:</ion-label>
+        <ion-datetime [(ngModel)]="suspenciones.fecha" name="fecha" display-format="DD/MM/YYYY"
+          picker-format="DDDD MMMM YYYY">
+        </ion-datetime>
+      </ion-item>
+        <ion-item>
+          <ion-label>Contrato:</ion-label>
+          <ion-select [(ngModel)]="suspenciones.contrato" name="contrato" value="Directos/as" okText="Okay"
+            cancelText="Dismiss">
+            <ion-select-option value="Sub contratados/as">Sub contratados/as</ion-select-option>
+            <ion-select-option value="Pasantia/Beca">Pasantia/Beca</ion-select-option>
+            <ion-select-option value="Monotributistas">Monotributistas</ion-select-option>
+            <ion-select-option value="Subvencionados/as">Subvencionados/as</ion-select-option>
+            <ion-select-option value="Temporarios/as">Temporarios/as</ion-select-option>
+            <ion-select-option value="Terciarizados/as">Terciarizados/as</ion-select-option>
+            <ion-select-option value="Por agencia">Por agencia</ion-select-option>
+            <ion-select-option value="Personas con discapacidad">Personas con discapacidad</ion-select-option>
+            <ion-select-option value="En negro">En negro</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Cantidad</ion-label>
+          <ion-select [(ngModel)]="suspenciones.cantidad" name="cantidad" value="brown" okText="Okay"
+            cancelText="Dismiss">
+            <ion-select-option *ngFor="let x of range" [value]="x">{{x}}</ion-select-option>
+
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Motivo</ion-label>
+          <ion-select [(ngModel)]="suspenciones.motivo" name="motivo" value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="falta de trabajo">falta de trabajo</ion-select-option>
+            <ion-select-option value="Diciplinarias">Diciplinarias</ion-select-option>
+            <ion-select-option value="Otros motivos">Otros motivos</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label class="alto" position="floating">Observaciones</ion-label>
+          <ion-textarea [(ngModel)]="suspenciones.observacion" name="observacion"></ion-textarea>
+        </ion-item>
+
+        <ion-button type="submit" color="shade" expand="block" fill="outline">Confirmar</ion-button>
+
+
+    </form>
+  </ion-list>
+
+
+</ion-content>
