@@ -1,15 +1,25 @@
 ion-card{
+	height: 33%;
 	text-align: center;
 	align-content: center;
 	align-self: center;
 	img{
-	  max-width: 150px;
-	  max-height: 150px;
+	  max-width: 75px;
+	  max-height: 75px;
 	}
 }
 .centrado{
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
+
+}
+
+ion-card-title{
+	font-size: 100%;
+	margin-bottom: 0% !important;
+}
+
+ion-button{
 
 }
