@@ -45,24 +45,24 @@ export class CambioCondicionesLaboralesPage implements OnInit {
       }
       else if(this.valor =="Variaciones sobre la forma de trabajo"){
         this.subSelect = [];
-        this.subSelect.push('Cambios de tarea o quite de tareas');
-        this.subSelect.push('Cambios en los métodos o formas de trabajo');
-        this.subSelect.push('Cambios de lugar de trabajo');
-        this.subSelect.push('Cambios de tecnología, máquinas y/o herramientas');
-        this.subSelect.push('Cambios en la asignación de trabajo o aumento de tareas');
+        this.subSelect.push('Tipo de tarea');
+        this.subSelect.push('Métod/formas trabajo');
+        this.subSelect.push('Lugar de trabajo');
+        this.subSelect.push('Tecn. máq. y/o herr');
+        this.subSelect.push('Aum/quite de tareas');
       }
       else if (this.valor == "Salud y seguridad en el trabajo"){
         this.subSelect = [];
         this.subSelect.push('Incidentes');
-        this.subSelect.push('Accidentes de trabajo');
-        this.subSelect.push('Accidentes “in itinere” ');
+        this.subSelect.push('Accid de trabajo');
+        this.subSelect.push('Accid “in itinere”');
         this.subSelect.push('Licencias médicas');
-        this.subSelect.push('Enfermedades laborales');
+        this.subSelect.push('Enfermedad laboral');
         this.subSelect.push('Ambiente insalubre');
-        this.subSelect.push('Problemas en la provisión de Elementos de Protección Personal');
-        this.subSelect.push('Problemas de aseo de los lugares de trabajo ');
-        this.subSelect.push('Problemas de mantenimiento de máquinas y/o herramientas ');
-        this.subSelect.push('Visitas de la ART o inspección del trabajo');
+        this.subSelect.push('Falta de EPP');
+        this.subSelect.push('Falta de higiene');
+        this.subSelect.push('Falta mantenimiento');
+        this.subSelect.push(' Inspección ART o MT ');
       }
       else if (this.valor == "Vínculos en el trabajo"){
         this.subSelect = [];

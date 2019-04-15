@@ -31,13 +31,11 @@
         </ion-item>
         <ion-item>
           <ion-label>Cantidad</ion-label>
-          <ion-select [(ngModel)]="bajas.cantidad" name="cantidad" value="brown" okText="Okay" cancelText="Dismiss">
-            <ion-select-option *ngFor="let x of range" [value]="x">{{x}}</ion-select-option>
-          </ion-select>
+          <ion-input type="number" [(ngModel)]="bajas.cantidad" name="cantidad" cancelText="Dismiss"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Motivo</ion-label>
-          <ion-select [(ngModel)]="bajas.motivo" name="motivo" value="Despido" okText="Okay" cancelText="Dismiss">
+          <ion-select [(ngModel)]="bajas.motivo" name="motivo" value="Despido"  okText="Aceptar" cancelText="Cancelar">
             <ion-select-option value="Despido">Despido</ion-select-option>
             <ion-select-option value="Renuncia">Renuncia</ion-select-option>
             <ion-select-option value="Retiro voluntario">Retiro voluntario</ion-select-option>
