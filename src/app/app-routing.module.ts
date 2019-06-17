@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'suspenciones', loadChildren: './VariacionesEnEmpleo/suspenciones/suspenciones.module#SuspencionesPageModule' },
   { path: 'conflictos-laborales', loadChildren: './conflictos-laborales/conflictos-laborales.module#ConflictosLaboralesPageModule' },
   { path: 'cambio-condiciones-laborales', loadChildren: './cambio-condiciones-laborales/cambio-condiciones-laborales.module#CambioCondicionesLaboralesPageModule' },
-  { path: 'pagina-principal', loadChildren: './pagina-principal/pagina-principal.module#PaginaPrincipalPageModule' }
+  { path: 'pagina-principal', loadChildren: './pagina-principal/pagina-principal.module#PaginaPrincipalPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
 ];
 @NgModule({
   imports: [

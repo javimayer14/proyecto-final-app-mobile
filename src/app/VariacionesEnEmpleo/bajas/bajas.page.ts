@@ -15,6 +15,7 @@ export class BajasPage implements OnInit {
     for(this.x=1;this.x<=100;this.x++){
       this.range.push(this.x);
     }
+    this.variacioncesService.fechaDeHoy(this.bajas);
    }
    bajas = {
     fecha:'',

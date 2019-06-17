@@ -11,12 +11,16 @@
       <ion-item>
         <ion-label>Fecha de suceso:</ion-label>
         <ion-datetime [(ngModel)]="suspenciones.fecha" name="fecha" display-format="DD/MM/YYYY"
-          picker-format="DDDD MMMM YYYY" okText="Aceptar" cancelText="Cancelar">
+          picker-format="DDDD MMMM YYYY" okText="Aceptar" cancelText="Cancelar"
+          monthNames="ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic"
+          monthShortNames="enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre"
+          doneText="aceptar"
+          cancelText="cancelar">
         </ion-datetime>
       </ion-item>
         <ion-item>
           <ion-label>Contrato:</ion-label>
-          <ion-select [(ngModel)]="suspenciones.contrato" name="contrato" value="Directos/as"  okText="Aceptar" cancelText="Cancelar">
+          <ion-select [(ngModel)]="suspenciones.contrato" name="contrato" value="Directos/as"   okText="Aceptar" doneText="aceptar" cancelText="cancelar">
             <ion-select-option value="Sub contratados/as">Sub contratados/as</ion-select-option>
             <ion-select-option value="Pasantia/Beca">Pasantia/Beca</ion-select-option>
             <ion-select-option value="Monotributistas">Monotributistas</ion-select-option>
@@ -35,7 +39,7 @@
         </ion-item>
         <ion-item>
           <ion-label>Motivo</ion-label>
-          <ion-select [(ngModel)]="suspenciones.motivo" name="motivo" value="brown" okText="Okay" cancelText="Dismiss">
+          <ion-select [(ngModel)]="suspenciones.motivo" name="motivo" value="brown"  okText="Aceptar" doneText="aceptar" cancelText="cancelar">
             <ion-select-option value="falta de trabajo">falta de trabajo</ion-select-option>
             <ion-select-option value="Diciplinarias">Diciplinarias</ion-select-option>
             <ion-select-option value="Otros motivos">Otros motivos</ion-select-option>

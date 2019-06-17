@@ -10,11 +10,16 @@
           <form #form="ngForm" (ngSubmit)="saveData(form)" novalidate>
               <ion-item>
                   <ion-label>Fecha de suceso:</ion-label>
-                  <ion-datetime [(ngModel)]="cambio.fecha" name="fecha" display-format="DD/MM/YYYY" picker-format="DDDD MMMM YYYY"></ion-datetime>
+                  <ion-datetime [(ngModel)]="cambio.fecha" name="fecha" display-format="DD/MM/YYYY" picker-format="DDDD MMMM YYYY"
+                  monthNames="ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic"
+                  monthShortNames="enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre"
+                  doneText="aceptar"
+                  cancelText="cancelar"></ion-datetime>
                 </ion-item>
            <ion-item>
             <ion-label>Cambio respecto a:</ion-label>
-            <ion-select [(ngModel)]="cambio.cambio_a" name="cambio_a" value="brown" okText="Okay"  ngModel (ngModelChange)='somethingChanged($event)' okText="Okay" cancelText="Dismiss">
+            <ion-select [(ngModel)]="cambio.motivoPrincipal" name="motivoPrincipal" value="brown"okText="Aceptar"  ngModel (ngModelChange)='somethingChanged($event)'doneText="aceptar"
+            cancelText="cancelar">
               <ion-select-option value="Problemas en los pagos">Problemas en los pagos</ion-select-option>
               <ion-select-option value="Jornada de trabajo">Jornada de trabajo</ion-select-option>
               <ion-select-option value="Variaciones sobre la forma de trabajo">Variaciones sobre la forma de trabajo</ion-select-option>
@@ -24,16 +29,16 @@
             </ion-select>
           </ion-item>
       
-          <ion-item>
+         <!-- <ion-item>
             <ion-label>sub indice</ion-label>
-            <ion-select   [(ngModel)]="cambio.cambio_suba" name="cambio_suba" value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select   [(ngModel)]="cambio.cambio_suba" name="cambio_suba" value="brown" okText="Aceptar" doneText="aceptar" cancelText="cancelar">
               <ion-select-option *ngFor="let x of subSelect" [value]="x">{{x}}</ion-select-option>
             </ion-select>
-          </ion-item>
+          </ion-item>-->
                 
   
           <ion-item>
-            <ion-label class="alto" position="floating">Observaciones</ion-label>
+            <ion-label class="alto" position="floating">Descripcion</ion-label>
             <ion-textarea  [(ngModel)]="cambio.observacion" name="observacion"></ion-textarea>
           </ion-item>
   

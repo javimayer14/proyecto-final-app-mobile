@@ -4,8 +4,16 @@ ion-card{
 	align-content: center;
 	align-self: center;
 	img{
-	  max-width: 75px;
-	  max-height: 75px;
+		@media screen and (min-width:600px) {
+			width:  15%;
+			height:  15%;
+		  }
+		  @media screen and (min-width:800px) {
+			width:  7%;
+			height:  7%;
+		  }
+	  width:  24%;
+	  height:  24%;
 	}
 }
 .centrado{
@@ -20,6 +28,5 @@ ion-card-title{
 	margin-bottom: 0% !important;
 }
 
-ion-button{
-	height: 15%;
-}
+
+

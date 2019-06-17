@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,15 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 export class VariacionesLaboralesService {
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   data: Observable<any>;
-  constructor( public http: HttpClient) { }
+  constructor( public http: HttpClient, public authService: AuthService ) { }
+
+  private agregarAutorizacionHeader(){
+    let token = this.authService.token;
+    if(token != null){
+        return this.httpHeaders.append('Authorization','Bearer ' + token);
+    }
+    return this.httpHeaders;
+}
 
   prueba = {
     id_delegado: 1,
@@ -56,7 +65,7 @@ export class VariacionesLaboralesService {
     this.prueba.tipo_variacion = "alta";
     this.prueba.descripcion = form.value.observacion;
     this.prueba.fecha = form.value.fecha;
-    this.data = this.http.post(url,this.prueba, {headers: this.httpHeaders});
+    this.data = this.http.post(url,this.prueba, {headers: this.agregarAutorizacionHeader()});
     this.data.subscribe(data =>{
       console.log(data);
     });
@@ -74,7 +83,7 @@ export class VariacionesLaboralesService {
     this.baja.tipo_variacion = "baja";
     this.baja.observacion = form.value.observacion;
     this.baja.fecha = form.value.fecha;
-    this.data = this.http.post(url,this.baja, {headers: this.httpHeaders});
+    this.data = this.http.post(url,this.baja, {headers: this.agregarAutorizacionHeader()});
     this.data.subscribe(data =>{
       console.log(data);
     });
@@ -89,9 +98,23 @@ saveSuspencion(form){
   this.suspencion.tipo_variacion = "suspencion";
   this.suspencion.fecha =form.value.fecha;
   this.suspencion.observacion = form.value.observacion;
-  this.data = this.http.post(url,this.suspencion, {headers: this.httpHeaders});
+  this.data = this.http.post(url,this.suspencion, {headers: this.agregarAutorizacionHeader()});
   this.data.subscribe(data =>{
     console.log(data);
   });
+}
+
+fechaDeHoy(json){
+  var f = new Date();
+  var mesBien = '' + (f.getMonth() + 1);
+  var diaBien = '' + f.getDate();
+  var anioBien = f.getFullYear();
+  if (mesBien.length < 2) mesBien = '0' + mesBien;
+  if (diaBien.length < 2) diaBien = '0' + diaBien;
+  var fechaFormatoCorrecto =  [anioBien, mesBien, diaBien].join('-');
+  var fin = fechaFormatoCorrecto.toString();
+  json.fecha = fin;
+  console.log(fechaFormatoCorrecto);
+  console.log(fin);
 }
 }

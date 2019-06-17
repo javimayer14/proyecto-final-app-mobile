@@ -11,16 +11,19 @@ export class CambioCondicionesLaboralesPage implements OnInit {
   valor:string;
   constructor(private cambioService : CambioCondicionesLaboralesService) {
 
+    this.fechaDeHoy(this.cambio);
    }
    
   cambio = {
     fecha: '',
-    cambio_a: '',
-    cambio_suba: '',
+    motivoPrincipal: null,
+
     observacion: '', 
   };
 
   saveData(form){
+    console.log(form.value.cambioPrincipal);
+    console.log(form.value.fecha);
     this.cambioService.save(form);
   }
   somethingChanged(value:any){
@@ -98,6 +101,20 @@ export class CambioCondicionesLaboralesPage implements OnInit {
       }
   }
   ngOnInit() {
+  }
+
+  fechaDeHoy(cambio){
+    var f = new Date();
+    var mesBien = '' + (f.getMonth() + 1);
+    var diaBien = '' + f.getDate();
+    var anioBien = f.getFullYear();
+    if (mesBien.length < 2) mesBien = '0' + mesBien;
+    if (diaBien.length < 2) diaBien = '0' + diaBien;
+    var fechaFormatoCorrecto =  [anioBien, mesBien, diaBien].join('-');
+    var fin = fechaFormatoCorrecto.toString();
+    cambio.fecha = fin;
+    console.log(fechaFormatoCorrecto);
+    console.log(fin);
   }
 
 }

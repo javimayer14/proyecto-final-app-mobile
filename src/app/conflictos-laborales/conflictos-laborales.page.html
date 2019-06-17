@@ -10,12 +10,16 @@
         <form #form="ngForm" (ngSubmit)="saveData(form)" novalidate>
           <ion-item>
               <ion-label>Fecha de suceso:</ion-label>
-                <ion-datetime [(ngModel)]="conflicto.fecha" name="fecha" display-format="DD/MM/YYYY" picker-format="DDDD MMMM YYYY"></ion-datetime>
+                <ion-datetime [(ngModel)]="conflicto.fecha" name="fecha" display-format="DD/MM/YYYY" picker-format="DDDD MMMM YYYY"
+                monthNames="ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic"
+                monthShortNames="enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre"
+                doneText="aceptar"
+                cancelText="cancelar"></ion-datetime>
               </ion-item>
   
-        <ion-item>
+       <!-- <ion-item>
           <ion-label>Motivo</ion-label> 
-          <ion-select [(ngModel)]="conflicto.motivo" name="motivo"  ngModel (ngModelChange)='somethingChanged($event)' value="Defensa de puestos de trabajo" okText="Okay" cancelText="Dismiss">
+          <ion-select [(ngModel)]="conflicto.motivo" name="motivo"  ngModel (ngModelChange)='somethingChanged($event)' value="Defensa de puestos de trabajo" okText="Aceptar" doneText="aceptar" cancelText="cancelar">
             <ion-select-option value="Defensa de puestos de trabajo">Defensa de puestos de trabajo</ion-select-option>
             <ion-select-option value="Reclamo salarial">Reclamo salarial</ion-select-option>
             <ion-select-option value="Registración (“blanqueo”)">Registración (“blanqueo”)</ion-select-option>
@@ -27,10 +31,10 @@
             <ion-select-option value="Cambio de categoría">Cambio de categoría</ion-select-option>
             <ion-select-option value="Otros motivos de conflictos">Otros motivos de conflictos </ion-select-option>
           </ion-select>
-        </ion-item>
+        </ion-item>-->
            <ion-item>
             <ion-label>Medida</ion-label>
-            <ion-select [(ngModel)]="conflicto.medida" name="medida" value=" Reunión con encargado" okText="Okay" cancelText="Dismiss">
+            <ion-select [(ngModel)]="conflicto.medida" name="medida" value=" Reunión con encargado" okText="Aceptar" doneText="aceptar" cancelText="cancelar">
               <ion-select-option value="Reunión con el encargado ">Reunión con encargado </ion-select-option>
               <ion-select-option value="Denuncia ante el Ministerio">Denuncia ante el Ministerio</ion-select-option>
               <ion-select-option value="Audiencia de conciliación">Audiencia de conciliación</ion-select-option>
@@ -47,7 +51,7 @@
                 
   
           <ion-item>
-            <ion-label class="alto" position="floating">Observaciones</ion-label>
+            <ion-label class="alto" position="floating">Descripcion</ion-label>
             <ion-textarea [(ngModel)]="conflicto.observacion" name="observacion" ></ion-textarea>
           </ion-item>
   

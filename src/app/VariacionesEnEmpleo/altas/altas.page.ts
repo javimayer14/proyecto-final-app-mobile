@@ -15,12 +15,17 @@ export class AltasPage implements OnInit {
   range:any[] = [];
   x:any= 1;
   data: Observable<any>;
+  fechaActual:String = "";
+  mesBien = "";
+  fin = "";
   constructor(public formBuilder: FormBuilder, public http: HttpClient, private variacioncesService: VariacionesLaboralesService) {
     for(this.x=1;this.x<=100;this.x++){
       this.range.push(this.x);
+      
     }
-   }
-  
+    this.variacioncesService.fechaDeHoy(this.altas);
+    }
+   
   altas = {
     fecha: '',
     contrato: '',
@@ -32,10 +37,13 @@ export class AltasPage implements OnInit {
 
   saveData(form){
    this.variacioncesService.saveAlta(form);
+   console.log(this.altas.fecha);
   }
   logForm(form) {
     console.log(form.value)}
   ngOnInit() {
+    
   }
+
 
 }

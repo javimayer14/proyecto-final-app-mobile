@@ -13,7 +13,8 @@ export class SuspencionesPage implements OnInit {
   x:any= 1;
   constructor( private variacioncesService: VariacionesLaboralesService) {
  
-   
+    this.variacioncesService.fechaDeHoy(this.suspenciones);
+
    }
 
    suspenciones = {
