@@ -17,11 +17,11 @@
               cancelText="cancelar"
               max ="2020"
               (click)="fechaDeHoy()"></ion-datetime>
-            </ion-item>
+            </ion-item> 
         <ion-item>
          <ion-label>Contrato</ion-label>
-         <ion-select [(ngModel)]="altas.contrato" class ="custom-font-size" name="contrato" value="Directos/as" okText="Aceptar" cancelText="Cancelar">
-           <ion-select-option value="Sub contratados/as">no se que iba</ion-select-option>
+         <ion-select [(ngModel)]="altas.contrato" interface="action-sheet" class ="custom-font-size" name="contrato" value="Directos/as" okText="Aceptar" cancelText="Cancelar">
+           <ion-select-option value="Sub contratados/as">Sub contratados/as</ion-select-option>
            <ion-select-option value="Pasantia/Beca">Pasantia/Beca</ion-select-option>
            <ion-select-option value="Monotributistas">Monotributistas</ion-select-option>
            <ion-select-option value="Subvencionados/as">Subvencionados/as</ion-select-option>

@@ -18,16 +18,22 @@
                 </ion-item>
            <ion-item>
             <ion-label>Cambio respecto a:</ion-label>
-            <ion-select [(ngModel)]="cambio.motivoPrincipal" name="motivoPrincipal" value="brown"okText="Aceptar"  ngModel (ngModelChange)='somethingChanged($event)'doneText="aceptar"
+            <ion-select class ="custom-font-size" interface="action-sheet" [(ngModel)]="cambio.motivoPrincipal" name="motivoPrincipal" value="brown"okText="Aceptar"  ngModel (ngModelChange)='somethingChanged($event)'doneText="aceptar"
             cancelText="cancelar">
-              <ion-select-option value="Problemas en los pagos">Problemas en los pagos</ion-select-option>
-              <ion-select-option value="Jornada de trabajo">Jornada de trabajo</ion-select-option>
-              <ion-select-option value="Variaciones sobre la forma de trabajo">Variaciones sobre la forma de trabajo</ion-select-option>
-              <ion-select-option value="Salud y seguridad en el trabajo">Salud y seguridad en el trabajo</ion-select-option>
-              <ion-select-option value="Vínculos en el trabajo">Vínculos en el trabajo</ion-select-option>
-              <ion-select-option value="Logros y beneficios">Logros y beneficios</ion-select-option>
+              <ion-select-option  class ="custom-font-size" value="Problemas en los pagos">Problemas en los pagos</ion-select-option>
+              <ion-select-option class ="custom-font-size"  value="Jornada de trabajo">Jornada de trabajo</ion-select-option>
+              <ion-select-option class ="custom-font-size"  value="Variaciones sobre la forma de trabajo">Variaciones sobre la forma de trabajo</ion-select-option>
+              <ion-select-option  class ="custom-font-size" value="Salud y seguridad en el trabajo">Salud y seguridad en el trabajo</ion-select-option>
+              <ion-select-option  class ="custom-font-size" value="Vínculos en el trabajo">Vínculos en el trabajo</ion-select-option>
+              <ion-select-option   class ="custom-font-size" value="Logros y beneficios">Logros y beneficios</ion-select-option>
             </ion-select>
           </ion-item>
+          
+
+
+
+
+
       
          <!-- <ion-item>
             <ion-label>sub indice</ion-label>

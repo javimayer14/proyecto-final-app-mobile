@@ -8,7 +8,7 @@
   <h1 text-center>Bajas</h1>
   <ion-list>
     <form #form="ngForm" (ngSubmit)="saveData(form)" novalidate>
-      <ion-item>
+      <ion-item> 
         <ion-label>Fecha de suceso:</ion-label>
         <ion-datetime [(ngModel)]="bajas.fecha" name="fecha" display-format="DD/MM/YYYY" picker-format="DDDD MMMM YYYY"
         monthNames="ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic"
@@ -20,7 +20,7 @@
      
         <ion-item>
           <ion-label>Contrato</ion-label>
-          <ion-select [(ngModel)]="bajas.contrato" name="contrato" value="Directos/as"  okText="Aceptar" doneText="aceptar" cancelText="cancelar">
+          <ion-select [(ngModel)]="bajas.contrato" interface="action-sheet"  name="contrato" value="Directos/as"  okText="Aceptar" doneText="aceptar" cancelText="cancelar">
             <ion-select-option value="Sub contratados/as">Sub contratados/as</ion-select-option>
             <ion-select-option value="Pasantia/Beca">Pasantia/Beca</ion-select-option>
             <ion-select-option value="Monotributistas">Monotributistas</ion-select-option>
@@ -38,7 +38,7 @@
         </ion-item>
         <ion-item>
           <ion-label>Motivo</ion-label>
-          <ion-select [(ngModel)]="bajas.motivo" name="motivo" value="Despido"   okText="Aceptar" doneText="aceptar" cancelText="cancelar">
+          <ion-select [(ngModel)]="bajas.motivo" interface="action-sheet"  name="motivo" value="Despido"   okText="Aceptar" doneText="aceptar" cancelText="cancelar">
             <ion-select-option value="Despido">Despido</ion-select-option>
             <ion-select-option value="Renuncia">Renuncia</ion-select-option>
             <ion-select-option value="Retiro voluntario">Retiro voluntario</ion-select-option>
