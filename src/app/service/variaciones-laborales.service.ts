@@ -20,49 +20,57 @@ export class VariacionesLaboralesService {
 }
 
   prueba = {
-    id_delegado: 1,
+    usuario: {
+      id:null
+    },
     id_tipo_contrato: 1,
     id_motivo: 1,
     cantidad: 0,
-    tipo_variacion: 'alta',
+    tipoVariacion: 'alta',
     tipo_incorporacion: 'sss',
     descripcion: 'ss',
     fecha: null,
   }
 
   baja = {
-    id_delegado: 1,
+    usuario: {
+      id:null
+    },
     id_tipo_contrato: 1,
     id_motivo: 1,
-    tipo_variacion: 'baja',
+    tipoVariacion: 'baja',
     contrato: '',
     cantidad: 0,
     motivo: '',
-    observacion: '',
+    descripcion: '',
     fecha: null,
   }
 
   suspencion = {
-    id_delegado: 1,
+    usuario: {
+      id:null
+    },
     id_tipo_contrato: 1,
     id_motivo: 1,
-    tipo_variacion: 'suspencion',
+    tipoVariacion: 'suspencion',
     contrato: '',
     cantidad: 0,
     motivo: '',
-    observacion: '',
+    descripcion: '',
     fecha: null,
   }
 
   saveAlta(form){
     var url = "http://localhost:8080/api/variaciones"
     let postData = new FormData();
-    this.prueba.id_delegado= 1;
+    let  usuario = this.authService.usuario;
+    console.log(usuario.id);
+    this.prueba.usuario.id= usuario.id;
     this.prueba.id_motivo = 1;
     this.prueba.id_tipo_contrato = 1;
     this.prueba.cantidad = form.value.cantidad;
     this.prueba.tipo_incorporacion= form.value.tipoIngreso;
-    this.prueba.tipo_variacion = "alta";
+    this.prueba.tipoVariacion = "alta";
     this.prueba.descripcion = form.value.observacion;
     this.prueba.fecha = form.value.fecha;
     this.data = this.http.post(url,this.prueba, {headers: this.agregarAutorizacionHeader()});
@@ -76,12 +84,14 @@ export class VariacionesLaboralesService {
   saveBaja(form){
     var url = "http://localhost:8080/api/variaciones"
     let postData = new FormData();
-    this.baja.id_delegado= 1;
+    let  usuario = this.authService.usuario;
+    console.log(usuario.id);
+    this.baja.usuario.id= usuario.id;
     this.baja.id_motivo = 1;
     this.baja.id_tipo_contrato = 1;
     this.baja.cantidad = form.value.cantidad;
-    this.baja.tipo_variacion = "baja";
-    this.baja.observacion = form.value.observacion;
+    this.baja.tipoVariacion = "baja";
+    this.baja.descripcion = form.value.observacion;
     this.baja.fecha = form.value.fecha;
     this.data = this.http.post(url,this.baja, {headers: this.agregarAutorizacionHeader()});
     this.data.subscribe(data =>{
@@ -91,13 +101,15 @@ export class VariacionesLaboralesService {
 saveSuspencion(form){
   var url = "http://localhost:8080/api/variaciones"
   let postData = new FormData();
-  this.suspencion.id_delegado= 1;
+  let  usuario = this.authService.usuario;
+  console.log(usuario.id);
+  this.suspencion.usuario.id= usuario.id;
   this.suspencion.id_motivo = 1;
   this.suspencion.id_tipo_contrato = 1;
   this.suspencion.cantidad = form.value.cantidad;
-  this.suspencion.tipo_variacion = "suspencion";
+  this.suspencion.tipoVariacion = "suspencion";
   this.suspencion.fecha =form.value.fecha;
-  this.suspencion.observacion = form.value.observacion;
+  this.suspencion.descripcion = form.value.observacion;
   this.data = this.http.post(url,this.suspencion, {headers: this.agregarAutorizacionHeader()});
   this.data.subscribe(data =>{
     console.log(data);

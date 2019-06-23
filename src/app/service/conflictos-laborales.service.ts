@@ -20,15 +20,19 @@ export class ConflictosLaboralesService {
 }
   
   conflicto = {
-    id_delegado: 1,
+    usuario: {
+      id:null
+    },
     medida: null,
     descripcion: 'ss',
     fecha: null,
   }
   save(form){
     var url = "http://localhost:8080/api/conflictosLaborales"
+    let  usuario = this.authService.usuario;
+    console.log(usuario.id);
     let postData = new FormData();
-    this.conflicto.id_delegado= 1;
+    this.conflicto.usuario.id= usuario.id;
     this.conflicto.medida = form.value.medida;
     this.conflicto.descripcion = form.value.observacion;
     this.conflicto.fecha =form.value.fecha;
