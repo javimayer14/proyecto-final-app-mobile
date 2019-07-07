@@ -17,7 +17,7 @@ export class ConflictosLaboralesPage implements OnInit {
       
   }
 
-  conflicto = {
+  conflicto = { 
     medida: '',
     observacion: '',
     fecha:'',

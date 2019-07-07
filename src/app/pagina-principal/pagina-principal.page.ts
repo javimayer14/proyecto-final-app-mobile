@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./pagina-principal.page.scss'],
 })
 export class PaginaPrincipalPage implements OnInit {
-
+  pelicula:String;
   constructor(public navCtrl: NavController, private router: Router) { }
   VariacionesIr(){
     this.router.navigate(['/tabs/tab1']);
