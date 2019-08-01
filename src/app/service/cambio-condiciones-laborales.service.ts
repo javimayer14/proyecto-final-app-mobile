@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Usuario } from '../clases/usuario';
+import swal from 'sweetalert2';
+
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +47,11 @@ export class CambioCondicionesLaboralesService {
     this.data = this.http.post(url,this.cambio, {headers: this.agregarAutorizacionHeader()});
     this.data.subscribe(data =>{
       console.log(data); 
+      swal.fire('Cambios de condiciones', 'El registro fue cargado con exito!' , "success");
+    }, err =>{
+      if(err.status == 400){
+        swal.fire('Cambios de condiciones','no posee conexion a internet',"error");
+      }
     });
 }
 }

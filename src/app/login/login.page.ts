@@ -5,6 +5,8 @@ import swal from 'sweetalert2';
 import { AuthService } from '../service/auth.service';
 
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,7 +14,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class LoginPage implements OnInit {
   usuario:Usuario;
-  constructor(private router:Router, private authService:AuthService) {
+  constructor(private router:Router,public authService:AuthService) {
     this.usuario = new Usuario();
    }
 
@@ -20,7 +22,7 @@ export class LoginPage implements OnInit {
   }
 
   logIn():void{
-  
+   authService:AuthService
     if(this.usuario.username == null || this.usuario.password == null){
       swal.fire('Error Login','Username o Password vacio',"error");
       return;

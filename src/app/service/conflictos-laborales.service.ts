@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,11 @@ export class ConflictosLaboralesService {
     this.data = this.http.post(url,this.conflicto, {headers: this.agregarAutorizacionHeader()});
     this.data.subscribe(data =>{
       console.log(data);
+      swal.fire('Conflictos laborales', 'El registro fue cargado con exito!' , "success");
+    }, err =>{
+      if(err.status == 400){
+        swal.fire('Conflictos laborales','no posee conexion a internet',"error");
+      }
     });
 }
 }

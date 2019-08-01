@@ -87,7 +87,7 @@ export class AuthService {
       this._usuario = null;
       sessionStorage.clear();
       sessionStorage.removeItem("usuario");
-      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("token"); 
   }
 
   

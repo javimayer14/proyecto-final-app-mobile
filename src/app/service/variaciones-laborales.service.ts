@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { AuthService } from './auth.service';
+import swal from 'sweetalert2';
+
 
 @Injectable({
   providedIn: 'root'
@@ -76,6 +78,11 @@ export class VariacionesLaboralesService {
     this.data = this.http.post(url,this.prueba, {headers: this.agregarAutorizacionHeader()});
     this.data.subscribe(data =>{
       console.log(data);
+      swal.fire('Variaciones laborales (altas)', 'El registro fue cargado con exito!' , "success");
+    }, err =>{
+      if(err.status == 400){
+        swal.fire('Variaciones laborales','no posee conexion a internet',"error");
+      }
     });
 
     
@@ -96,6 +103,12 @@ export class VariacionesLaboralesService {
     this.data = this.http.post(url,this.baja, {headers: this.agregarAutorizacionHeader()});
     this.data.subscribe(data =>{
       console.log(data);
+      swal.fire('Variaciones laborales (bajas)', 'El registro fue cargado con exito!' , "success");
+    }, err =>{
+      if(err.status == 400){
+        swal.fire('Variaciones laborales','no posee conexion a internet',"error");
+      }
+      
     });
 }
 saveSuspencion(form){
@@ -113,6 +126,11 @@ saveSuspencion(form){
   this.data = this.http.post(url,this.suspencion, {headers: this.agregarAutorizacionHeader()});
   this.data.subscribe(data =>{
     console.log(data);
+    swal.fire('Variaciones laborales (suspenciones)', 'El registro fue cargado con exito!' , "success");
+  }, err =>{
+    if(err.status == 400){
+      swal.fire('Variaciones laborales','no posee conexion a internet',"error");
+    }
   });
 }
 
