@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { AuthService } from './auth.service';
 import swal from 'sweetalert2';
 
@@ -25,11 +25,11 @@ export class VariacionesLaboralesService {
     usuario: {
       id:null
     },
-    id_tipo_contrato: 1,
-    id_motivo: 1,
+    tipo_contrato: "",
+    motivo: null,
     cantidad: 0,
     tipoVariacion: 'alta',
-    tipo_incorporacion: 'sss',
+    tipoIncorporacion: 'sss',
     descripcion: 'ss',
     fecha: null,
   }
@@ -39,7 +39,6 @@ export class VariacionesLaboralesService {
       id:null
     },
     id_tipo_contrato: 1,
-    id_motivo: 1,
     tipoVariacion: 'baja',
     contrato: '',
     cantidad: 0,
@@ -53,7 +52,7 @@ export class VariacionesLaboralesService {
       id:null
     },
     id_tipo_contrato: 1,
-    id_motivo: 1,
+  
     tipoVariacion: 'suspencion',
     contrato: '',
     cantidad: 0,
@@ -68,14 +67,15 @@ export class VariacionesLaboralesService {
     let  usuario = this.authService.usuario;
     console.log(usuario.id);
     this.prueba.usuario.id= usuario.id;
-    this.prueba.id_motivo = 1;
-    this.prueba.id_tipo_contrato = 1;
+    this.prueba.motivo = null;
+    this.prueba.tipo_contrato = form.value.contrato;
     this.prueba.cantidad = form.value.cantidad;
-    this.prueba.tipo_incorporacion= form.value.tipoIngreso;
+    this.prueba.tipoIncorporacion= form.value.tipoIngreso;
     this.prueba.tipoVariacion = "alta";
     this.prueba.descripcion = form.value.observacion;
     this.prueba.fecha = form.value.fecha;
-    this.data = this.http.post(url,this.prueba, {headers: this.agregarAutorizacionHeader()});
+    let params = new HttpParams().set("contrato",  form.value.contrato);
+    this.data = this.http.post(url,this.prueba, {headers: this.agregarAutorizacionHeader(),params: params});
     this.data.subscribe(data =>{
       console.log(data);
       swal.fire('Variaciones laborales (altas)', 'El registro fue cargado con exito!' , "success");
@@ -94,13 +94,15 @@ export class VariacionesLaboralesService {
     let  usuario = this.authService.usuario;
     console.log(usuario.id);
     this.baja.usuario.id= usuario.id;
-    this.baja.id_motivo = 1;
+    this.baja.motivo = form.value.motivo;
     this.baja.id_tipo_contrato = 1;
     this.baja.cantidad = form.value.cantidad;
     this.baja.tipoVariacion = "baja";
     this.baja.descripcion = form.value.observacion;
     this.baja.fecha = form.value.fecha;
-    this.data = this.http.post(url,this.baja, {headers: this.agregarAutorizacionHeader()});
+    let params = new HttpParams().set("contrato",  form.value.contrato);
+
+    this.data = this.http.post(url,this.baja, {headers: this.agregarAutorizacionHeader(),params:params});
     this.data.subscribe(data =>{
       console.log(data);
       swal.fire('Variaciones laborales (bajas)', 'El registro fue cargado con exito!' , "success");
@@ -117,13 +119,14 @@ saveSuspencion(form){
   let  usuario = this.authService.usuario;
   console.log(usuario.id);
   this.suspencion.usuario.id= usuario.id;
-  this.suspencion.id_motivo = 1;
+  this.suspencion.motivo = form.value.motivo;
   this.suspencion.id_tipo_contrato = 1;
   this.suspencion.cantidad = form.value.cantidad;
   this.suspencion.tipoVariacion = "suspencion";
   this.suspencion.fecha =form.value.fecha;
   this.suspencion.descripcion = form.value.observacion;
-  this.data = this.http.post(url,this.suspencion, {headers: this.agregarAutorizacionHeader()});
+  let params = new HttpParams().set("contrato",  form.value.contrato);
+  this.data = this.http.post(url,this.suspencion, {headers: this.agregarAutorizacionHeader(),params:params});
   this.data.subscribe(data =>{
     console.log(data);
     swal.fire('Variaciones laborales (suspenciones)', 'El registro fue cargado con exito!' , "success");
