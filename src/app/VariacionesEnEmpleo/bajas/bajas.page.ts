@@ -8,27 +8,24 @@ import { VariacionesLaboralesService } from '../../service/variaciones-laborales
 })
 export class BajasPage implements OnInit {
 
-  range:any[] = [];
-  x:any= 1;
-  constructor( private variacioncesService: VariacionesLaboralesService) {
- 
-    for(this.x=1;this.x<=100;this.x++){
-      this.range.push(this.x);
-    }
+  constructor(private variacioncesService: VariacionesLaboralesService) {
+
     this.variacioncesService.fechaDeHoy(this.bajas);
-   }
-   bajas = {
-    fecha:'',
+  }
+  bajas = {
+    fecha: '',
     contrato: '',
     cantidad: '',
     motivo: '',
     observacion: '',
-    
+
   };
 
-  saveData(form){
+  // Pasa formulario para enviar a backEnd
+  saveData(form) {
     this.variacioncesService.saveBaja(form);
   }
+
   ngOnInit() {
   }
 

@@ -14,12 +14,12 @@
                   monthNames="ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic"
                   monthShortNames="enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre"
                   doneText="aceptar"
-                  cancelText="cancelar"></ion-datetime>
+                  cancelText="Cancelar"></ion-datetime>
                 </ion-item>
            <ion-item>
             <ion-label>Cambio respecto a:</ion-label>
-            <ion-select class ="custom-font-size" interface="action-sheet" [(ngModel)]="cambio.motivoPrincipal" name="motivoPrincipal" value="brown"okText="Aceptar"  ngModel (ngModelChange)='somethingChanged($event)'doneText="aceptar"
-            cancelText="cancelar">
+            <ion-select class ="custom-font-size" interface="action-sheet" [(ngModel)]="cambio.motivoPrincipal" name="motivoPrincipal" value="brown"okText="Aceptar"   doneText="aceptar"
+            cancelText="Cancelar">
               <ion-select-option  class ="custom-font-size" value="Problemas en los pagos">Problemas en los pagos</ion-select-option>
               <ion-select-option class ="custom-font-size"  value="Jornada de trabajo">Jornada de trabajo</ion-select-option>
               <ion-select-option class ="custom-font-size"  value="Variaciones sobre la forma de trabajo">Variaciones sobre la forma de trabajo</ion-select-option>
@@ -37,14 +37,14 @@
       
          <!-- <ion-item>
             <ion-label>sub indice</ion-label>
-            <ion-select   [(ngModel)]="cambio.cambio_suba" name="cambio_suba" value="brown" okText="Aceptar" doneText="aceptar" cancelText="cancelar">
+            <ion-select   [(ngModel)]="cambio.cambio_suba" name="cambio_suba" value="brown" okText="Aceptar" doneText="aceptar" cancelText="Cancelar">
               <ion-select-option *ngFor="let x of subSelect" [value]="x">{{x}}</ion-select-option>
             </ion-select>
           </ion-item>-->
                 
   
           <ion-item>
-            <ion-label class="alto" position="floating">Descripcion</ion-label>
+            <ion-label class="alto" position="floating">Descripción</ion-label>
             <ion-textarea  [(ngModel)]="cambio.observacion" name="observacion"></ion-textarea>
           </ion-item>
   

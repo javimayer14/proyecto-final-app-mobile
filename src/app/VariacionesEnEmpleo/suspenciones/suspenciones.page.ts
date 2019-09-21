@@ -8,9 +8,7 @@ import { VariacionesLaboralesService } from '../../service/variaciones-laborales
   styleUrls: ['./suspenciones.page.scss'],
 })
 export class SuspencionesPage implements OnInit {
-  
-  range:any[] = [];
-  x:any= 1;
+
   constructor( private variacioncesService: VariacionesLaboralesService) {
  
     this.variacioncesService.fechaDeHoy(this.suspenciones);
@@ -26,15 +24,11 @@ export class SuspencionesPage implements OnInit {
     
   };
 
+  // Pasa formulario para enviar a backEnd
   saveData(form){
    this.variacioncesService.saveSuspencion(form);
   }
-  ngOnInit() {
-    
-    for(this.x=1;this.x<=100;this.x++){
-      this.range.push(this.x);
-    }
-    
+  ngOnInit() {    
   }
 
 }

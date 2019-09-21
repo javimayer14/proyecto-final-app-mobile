@@ -10,27 +10,27 @@
     <form #form="ngForm" (ngSubmit)="saveData(form)" novalidate>
       <ion-item> 
         <ion-label>Fecha de suceso:</ion-label>
-        <ion-datetime [(ngModel)]="bajas.fecha" name="fecha" display-format="DD/MM/YYYY" picker-format="DDDD MMMM YYYY"
+        <ion-datetime (onChange)="pruebaa()"[(ngModel)]="bajas.fecha" name="fecha" display-format="DD/MM/YYYY" picker-format="DDDD MMMM YYYY"
         monthNames="ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic"
         monthShortNames="enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre"
         doneText="aceptar"
-        cancelText="cancelar">
-        </ion-datetime>
+        cancelText="Cancelar">
+        </ion-datetime> 
       </ion-item>
      
         <ion-item>
           <ion-label>Contrato</ion-label>
-          <ion-select [(ngModel)]="bajas.contrato" interface="action-sheet"  name="contrato" value="Directos/as"  okText="Aceptar" doneText="aceptar" cancelText="cancelar">
-            <ion-select-option value="Directo">Directo</ion-select-option>
-            <ion-select-option value="Subcontratado">Subcontratado</ion-select-option>
-            <ion-select-option value="Pasantía o Beca">Pasantía o Beca</ion-select-option>
+          <ion-select [(ngModel)]="bajas.contrato" interface="action-sheet"  name="contrato" value="Directos/as"  okText="Aceptar" doneText="aceptar" cancelText="CANCELAR">
+            <ion-select-option value="Directo">Directos/as</ion-select-option>
+            <ion-select-option value="Subcontratado">Subcontratados/as</ion-select-option>
+            <ion-select-option value="Pasantía o Beca">Pasantía o beca</ion-select-option>
             <ion-select-option value="Monotributista">Monotributista</ion-select-option>
-            <ion-select-option value="Subvencionado">Subvencionado</ion-select-option>
+            <ion-select-option value="Subvencionado">Subvencionados/as</ion-select-option>
             <ion-select-option value="Contrato temporario">Contrato temporario</ion-select-option>
-            <ion-select-option value="Tercerizado">Tercerizado</ion-select-option>
             <ion-select-option value="Por agencia">Por agencia</ion-select-option>
-            <ion-select-option value="Persona con discapacidad">'Persona con discapacidad</ion-select-option>
-            <ion-select-option value="En negro">En negro</ion-select-option>
+            <ion-select-option value="Persona con discapacidad">Persona con discapacidad</ion-select-option>
+            <ion-select-option value="No registrados">No registrados/as</ion-select-option>
+            <ion-select-option value="Otro">Otro</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
@@ -39,20 +39,20 @@
         </ion-item>
         <ion-item>
           <ion-label>Motivo</ion-label>
-          <ion-select [(ngModel)]="bajas.motivo" interface="action-sheet"  name="motivo" value="Despido"   okText="Aceptar" doneText="aceptar" cancelText="cancelar">
+          <ion-select [(ngModel)]="bajas.motivo" interface="action-sheet"  name="motivo" value="Despido"   okText="ACEPTAR" doneText="ACEPTAR" cancelText="CANCELAR">
             <ion-select-option value="Despido">Despido</ion-select-option>
             <ion-select-option value="Renuncia">Renuncia</ion-select-option>
             <ion-select-option value="Retiro voluntario">Retiro voluntario</ion-select-option>
-            <ion-select-option value="Finalizacion contrato">Finalizacion contrato</ion-select-option>
-            <ion-select-option value="Jubilacion">Jubilacion</ion-select-option>
-            <ion-select-option value="Desafiliacion">Desafiliacion</ion-select-option>
+            <ion-select-option value="Finalizacion contrato">Finalización contrato</ion-select-option>
+            <ion-select-option value="Jubilacion">Jubilación</ion-select-option>
+            <ion-select-option value="Desafiliacion">Desafiliación</ion-select-option>
             <ion-select-option value="Otro">Otro</ion-select-option>
           </ion-select>
         </ion-item>
 
 
         <ion-item>
-          <ion-label class="alto" position="floating">Observaciones</ion-label>
+          <ion-label class="alto" position="floating">Descripción</ion-label>
           <ion-textarea [(ngModel)]="bajas.observacion" name="observacion"></ion-textarea>
         </ion-item>
 

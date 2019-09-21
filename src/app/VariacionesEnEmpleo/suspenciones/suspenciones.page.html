@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <h1 text-center>Suspenciones</h1>
+  <h1 text-center>Suspensiones</h1>
   <ion-list>
     <form #form="ngForm" (ngSubmit)="saveData(form)" novalidate>
       <ion-item> 
@@ -15,22 +15,22 @@
           monthNames="ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic"
           monthShortNames="enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre"
           doneText="aceptar"
-          cancelText="cancelar">
+          cancelText="Cancelar">
         </ion-datetime>
       </ion-item>
         <ion-item>
           <ion-label>Contrato:</ion-label>
-          <ion-select [(ngModel)]="suspenciones.contrato" interface="action-sheet" name="contrato" value="Directos/as"   okText="Aceptar" doneText="aceptar" cancelText="cancelar">
-            <ion-select-option value="Directo">Directo</ion-select-option>
-           <ion-select-option value="Subcontratado">Subcontratado</ion-select-option>
-           <ion-select-option value="Pasantía o Beca">Pasantía o Beca</ion-select-option>
-           <ion-select-option value="Monotributista">Monotributista</ion-select-option>
-           <ion-select-option value="Subvencionado">Subvencionado</ion-select-option>
-           <ion-select-option value="Contrato temporario">Contrato temporario</ion-select-option>
-           <ion-select-option value="Tercerizado">Tercerizado</ion-select-option>
-           <ion-select-option value="Por agencia">Por agencia</ion-select-option>
-           <ion-select-option value="Persona con discapacidad">'Persona con discapacidad</ion-select-option>
-           <ion-select-option value="En negro">En negro</ion-select-option>
+          <ion-select [(ngModel)]="suspenciones.contrato" interface="action-sheet" name="contrato" value="Directos/as"   okText="ACEPTAR" doneText="ACEPTAR" cancelText="CANCELAR">
+            <ion-select-option value="Directo">Directos/as</ion-select-option>
+            <ion-select-option value="Subcontratado">Subcontratados/as</ion-select-option>
+            <ion-select-option value="Pasantía o Beca">Pasantía o beca</ion-select-option>
+            <ion-select-option value="Monotributista">Monotributista</ion-select-option>
+            <ion-select-option value="Subvencionado">Subvencionados/as</ion-select-option>
+            <ion-select-option value="Contrato temporario">Contrato temporario</ion-select-option>
+            <ion-select-option value="Por agencia">Por agencia</ion-select-option>
+            <ion-select-option value="Persona con discapacidad">Persona con discapacidad</ion-select-option>
+            <ion-select-option value="No registrados">No registrados/as</ion-select-option>
+            <ion-select-option value="Otro">Otro</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
@@ -40,23 +40,23 @@
         </ion-item>
         <ion-item>
           <ion-label>Motivo</ion-label>
-          <ion-select [(ngModel)]="suspenciones.motivo"  interface="action-sheet" name="motivo" value="brown"  okText="Aceptar" doneText="aceptar" cancelText="cancelar">
-            <ion-select-option value="falta de trabajo">falta de trabajo</ion-select-option>
-            <ion-select-option value="Diciplinarias">Diciplinarias</ion-select-option>
+          <ion-select [(ngModel)]="suspenciones.motivo"  interface="action-sheet" name="motivo" value="brown"  okText="Aceptar" doneText="aceptar" cancelText="CANCELAR">
+            <ion-select-option value="falta de trabajo">Falta de trabajo</ion-select-option>
+            <ion-select-option value="Diciplinarias">Disciplinarias</ion-select-option>
             <ion-select-option value="Otros motivos">Otros motivos</ion-select-option>
           </ion-select>
         </ion-item>
 
 
         <ion-item>
-          <ion-label class="alto" position="floating">Observaciones</ion-label>
+          <ion-label class="alto" position="floating">Descripción</ion-label>
           <ion-textarea [(ngModel)]="suspenciones.observacion" name="observacion"></ion-textarea>
         </ion-item>
-
+  
         <ion-button type="submit" color="shade" expand="block" fill="outline">Confirmar</ion-button>
 
 
-    </form>
+    </form >
   </ion-list>
 
 

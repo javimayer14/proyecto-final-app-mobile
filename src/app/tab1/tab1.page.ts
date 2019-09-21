@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
-
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -11,13 +10,13 @@ export class Tab1Page {
   constructor(public navCtrl: NavController) {
 
   }
-  AltasIr(){
+  AltasIr() {
     this.navCtrl.navigateForward('tabs/tab1/altas');
   }
-  BajasIr(){
+  BajasIr() {
     this.navCtrl.navigateForward('tabs/tab1/bajas');
   }
-  SuspencionesIr(){
+  SuspencionesIr() {
     this.navCtrl.navigateForward('tabs/tab1/suspenciones');
   }
 }
