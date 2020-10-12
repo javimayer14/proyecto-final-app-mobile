@@ -38,6 +38,8 @@ export class LoginPage implements OnInit {
     }, err => {
       if (err.status == 400) {
         swal.fire('Error Login', 'Username o Password incorrecto', "error");
+      }else{
+        console.log("ERROR ", err)
       }
     });
   }

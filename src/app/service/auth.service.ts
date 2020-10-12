@@ -14,7 +14,7 @@ export class AuthService {
   ServerUrl:String;
   constructor(private http: HttpClient) {
 
-    this.ServerUrl = "http://localhost:8080";
+    this.ServerUrl = "http://proyunajuom-api.informatica.unaj.edu.ar";
 
    }
 
