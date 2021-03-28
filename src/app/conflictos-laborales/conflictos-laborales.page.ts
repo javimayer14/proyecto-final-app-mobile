@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConflictosLaboralesService } from '../service/conflictos-laborales.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-conflictos-laborales',
@@ -7,8 +8,9 @@ import { ConflictosLaboralesService } from '../service/conflictos-laborales.serv
   styleUrls: ['./conflictos-laborales.page.scss'],
 })
 export class ConflictosLaboralesPage implements OnInit {
-
-  constructor(private conflictosLaborales: ConflictosLaboralesService) {
+  public pauseSpiner = true;
+  public buttonDisable = false;
+  constructor(private conflictosLaborales: ConflictosLaboralesService,  private router: Router) {
     this.fechaDeHoy(this.conflicto);
   }
 
@@ -20,8 +22,13 @@ export class ConflictosLaboralesPage implements OnInit {
   };
 
   // Llama a servicio que manda data al backEnd (pasamanos)
-  saveData(form) {
-    this.conflictosLaborales.save(form);
+  async saveData(form) {
+    this.pauseSpiner = false
+    this.buttonDisable= true;
+    await this.conflictosLaborales.save(form);
+    this.router.navigate(['/pagina-principal']);
+    this.buttonDisable= false;
+    this.pauseSpiner= true; 
   }
   ngOnInit() {
   }

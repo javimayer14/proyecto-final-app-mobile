@@ -46,13 +46,30 @@ export class CambioCondicionesLaboralesService {
     this.cambio.motivoPrincipal = form.value.motivoPrincipal;
     this.cambio.descripcion = form.value.observacion;
     this.cambio.fecha = form.value.fecha;
+
+    return new Promise((resolve, reject) => {
+
     this.data = this.http.post(url, this.cambio, { headers: this.agregarAutorizacionHeader() });
     this.data.subscribe(data => {
+      this.sleep(5000);
+      resolve();
       swal.fire('Cambios de condiciones', '¡El registro fue cargado con éxito!', "success");
     }, err => {
       if (err.status == 400) {
+        this.sleep(5000);
+        resolve();
         swal.fire('Cambios de condiciones', 'no posee conexión a internet', "error");
       }
+      if (err.status == 500) {
+        this.sleep(5000);
+        resolve();
+        swal.fire('Cambios de condiciones', 'Error interno', "error");
+      }
     });
+  })
   }
+  sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
 }

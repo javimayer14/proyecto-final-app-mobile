@@ -6,7 +6,7 @@
   <ion-toolbar>
     <ion-title>Variaciones en el empleo</ion-title>
   </ion-toolbar>
-  
+   
 </ion-header>
 
 <ion-content padding>
@@ -63,7 +63,7 @@
             <ion-textarea [(ngModel)]="altas.observacion" name = "observacion" ></ion-textarea>
           </ion-item>
   
-          <ion-button  color="green" expand="block"  fill="outline" type="submit" >Confirmar</ion-button>
+          <ion-button  color="green" expand="block"  fill="outline" type="submit" disabled="{{buttonDisable}}"><ion-spinner paused={{pauseSpiner}}></ion-spinner>Confirmar</ion-button>
         </form>
     </ion-list>
     

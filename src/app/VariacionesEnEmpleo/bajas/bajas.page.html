@@ -17,7 +17,7 @@
         cancelText="Cancelar">
         </ion-datetime> 
       </ion-item>
-     
+
         <ion-item>
           <ion-label>Contrato</ion-label>
           <ion-select [(ngModel)]="bajas.contrato" interface="action-sheet"  name="contrato" value="Directos/as"  okText="Aceptar" doneText="aceptar" cancelText="CANCELAR">
@@ -55,8 +55,9 @@
           <ion-label class="alto" position="floating">Descripción</ion-label>
           <ion-textarea [(ngModel)]="bajas.observacion" name="observacion"></ion-textarea>
         </ion-item>
-
-        <ion-button expand="block" color="danger" fill="outline" type="submit">Confirmar</ion-button>
+      
+        <ion-button disabled="{{buttonDisable}}" expand="block" color="danger" fill="outline" type="submit"><ion-spinner paused={{pauseSpiner}}></ion-spinner>
+          Confirmar</ion-button>
 
 
     </form>

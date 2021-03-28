@@ -11,6 +11,7 @@ import swal from 'sweetalert2';
 export class VariacionesLaboralesService {
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   data: Observable<any>;
+
   constructor(public http: HttpClient, public authService: AuthService) { }
 
   private agregarAutorizacionHeader() {
@@ -77,19 +78,31 @@ export class VariacionesLaboralesService {
     this.prueba.descripcion = form.value.observacion;
     this.prueba.fecha = form.value.fecha;
     let params = new HttpParams().set("contrato", form.value.contrato);
+
+    return new Promise((resolve, reject) => {
+
     this.data = this.http.post(url, this.prueba, { headers: this.agregarAutorizacionHeader(), params: params });
     this.data.subscribe(data => {
+      this.sleep(5000);
+      resolve();
       swal.fire('Variaciones laborales (altas)', '¡El registro fue cargado con éxito!', "success");
     }, err => {
       if (err.status == 400) {
+        this.sleep(5000);
+        resolve();
         swal.fire('Variaciones laborales', 'no posee conexión a internet', "error");
       }
+      if (err.status == 500) {
+        this.sleep(5000);
+        resolve();
+        swal.fire('Variaciones laborales', 'Error interno', "error");
+      }
     });
-
+  })
   }
 
   // Método que manda el formulario de baja (ahora JSON) al backEnd para guardarlo 
-  saveBaja(form) {
+   saveBaja(form) {
     var url = this.authService.ServerUrl + "/api/variaciones"
     let postData = new FormData();
     let usuario = this.authService.usuario;
@@ -101,18 +114,34 @@ export class VariacionesLaboralesService {
     this.baja.descripcion = form.value.observacion;
     this.baja.fecha = form.value.fecha;
     let params = new HttpParams().set("contrato", form.value.contrato);
+    return new Promise((resolve, reject) => {
 
-    this.data = this.http.post(url, this.baja, { headers: this.agregarAutorizacionHeader(), params: params });
-    this.data.subscribe(data => {
+    this.data =  this.http.post(url, this.baja, { headers: this.agregarAutorizacionHeader(), params: params });
+    this.data.subscribe((data) => {
+      this.sleep(5000);
+      resolve();
       swal.fire('Variaciones laborales (bajas)', '¡El registro fue cargado con éxito!', "success");
     }, err => {
       if (err.status == 400) {
-        swal.fire('Variaciones laborales', 'no posee conexión a internet', "error");
+        resolve();
+        swal.fire('Variaciones laborales', 'revise su conexión a internet', "error");
+      }
+      if(err.status == 500){
+        this.sleep(5000);
+        resolve();
+        swal.fire('Variaciones laborales', 'se ha producido un error', "error");
+
       }
 
     });
+  })
   }
 
+  
+   sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
   // Método que manda el formulario de suspencion (ahora JSON) al backEnd para guardarlo 
   saveSuspencion(form) {
     var url = this.authService.ServerUrl + "/api/variaciones"
@@ -126,14 +155,26 @@ export class VariacionesLaboralesService {
     this.suspencion.fecha = form.value.fecha;
     this.suspencion.descripcion = form.value.observacion;
     let params = new HttpParams().set("contrato", form.value.contrato);
+    return new Promise((resolve, reject) => {
+
     this.data = this.http.post(url, this.suspencion, { headers: this.agregarAutorizacionHeader(), params: params });
     this.data.subscribe(data => {
+      this.sleep(5000);
+      resolve();
       swal.fire('Variaciones laborales (suspensiones)', '¡El registro fue cargado con éxito!', "success");
     }, err => {
       if (err.status == 400) {
+        this.sleep(5000);
+        resolve();
         swal.fire('Variaciones laborales', 'no posee conexión a internet', "error");
       }
+      if (err.status == 500) {
+        this.sleep(5000);
+        resolve();
+        swal.fire('Variaciones laborales', 'Error interno', "error");
+      }
     });
+  })
   }
 
   // Carga la fecha actual

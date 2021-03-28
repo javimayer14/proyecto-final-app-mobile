@@ -53,11 +53,11 @@
           <ion-textarea [(ngModel)]="suspenciones.observacion" name="observacion"></ion-textarea>
         </ion-item>
   
-        <ion-button type="submit" color="shade" expand="block" fill="outline">Confirmar</ion-button>
+        <ion-button type="submit" color="shade" expand="block" fill="outline" disabled="{{buttonDisable}}"><ion-spinner paused={{pauseSpiner}}></ion-spinner>Confirmar</ion-button>
 
 
     </form >
-  </ion-list>
+  </ion-list> 
 
 
 </ion-content>

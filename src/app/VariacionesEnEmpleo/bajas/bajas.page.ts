@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VariacionesLaboralesService } from '../../service/variaciones-laborales.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bajas',
@@ -7,8 +8,9 @@ import { VariacionesLaboralesService } from '../../service/variaciones-laborales
   styleUrls: ['./bajas.page.scss'],
 })
 export class BajasPage implements OnInit {
-
-  constructor(private variacioncesService: VariacionesLaboralesService) {
+  public pauseSpiner = true;
+  public buttonDisable = false;
+  constructor(private variacioncesService: VariacionesLaboralesService,  private router: Router) {
 
     this.variacioncesService.fechaDeHoy(this.bajas);
   }
@@ -22,8 +24,14 @@ export class BajasPage implements OnInit {
   };
 
   // Pasa formulario para enviar a backEnd
-  saveData(form) {
-    this.variacioncesService.saveBaja(form);
+  async saveData(form) {
+    this.pauseSpiner = false
+    this.buttonDisable= true;
+    await this.variacioncesService.saveBaja(form);
+    this.router.navigate(['/pagina-principal']);
+    this.buttonDisable= false;
+    this.pauseSpiner= true;
+
   }
 
   ngOnInit() {

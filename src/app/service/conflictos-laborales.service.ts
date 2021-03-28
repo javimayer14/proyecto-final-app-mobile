@@ -39,13 +39,31 @@ export class ConflictosLaboralesService {
     this.conflicto.medida = form.value.medida;
     this.conflicto.descripcion = form.value.observacion;
     this.conflicto.fecha = form.value.fecha;
+
+    return new Promise((resolve, reject) => {
+
     this.data = this.http.post(url, this.conflicto, { headers: this.agregarAutorizacionHeader() });
     this.data.subscribe(data => {
+      this.sleep(5000);
+      resolve();
       swal.fire('Conflictos laborales', '¡El registro fue cargado con éxito!', "success");
     }, err => {
       if (err.status == 400) {
+        this.sleep(5000);
+        resolve();
         swal.fire('Conflictos laborales', 'no posee conexión a internet', "error");
       }
+      if (err.status == 500) {
+        this.sleep(5000);
+        resolve();
+        swal.fire('Conflictos laborales', 'Error interno', "error");
+      }
     });
+  })
   }
+
+  sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
 }

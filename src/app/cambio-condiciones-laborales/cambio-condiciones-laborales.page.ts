@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CambioCondicionesLaboralesService } from '../service/cambio-condiciones-laborales.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cambio-condiciones-laborales',
@@ -9,7 +10,9 @@ import { CambioCondicionesLaboralesService } from '../service/cambio-condiciones
 export class CambioCondicionesLaboralesPage implements OnInit {
   subSelect: String[];
   valor: string;
-  constructor(private cambioService: CambioCondicionesLaboralesService) {
+  public pauseSpiner = true;
+  public buttonDisable = false;
+  constructor(private cambioService: CambioCondicionesLaboralesService,  private router: Router) {
 
     this.fechaDeHoy(this.cambio);
   }
@@ -21,11 +24,16 @@ export class CambioCondicionesLaboralesPage implements OnInit {
   };
 
   // Este metodo llama a un revicio donde le pasa los datos del formulario (pasamanos)
-  saveData(form) {
-    this.cambioService.save(form);
+  async saveData(form) {
+    this.pauseSpiner = false
+    this.buttonDisable= true;
+    await this.cambioService.save(form);
+    this.router.navigate(['/pagina-principal']);
+    this.buttonDisable= false;
+    this.pauseSpiner= true; 
   }
 
-  // Método que quedó deplecado, su funcion era cambiar un combo en base a lo que se elegia en otro,
+  // Método que quedó deprecado, su funcion era cambiar un combo en base a lo que se elegia en otro,
   // no se borra por si en el futuro debe implementarse.
   somethingChanged(value: any) {
     this.subSelect = [];
