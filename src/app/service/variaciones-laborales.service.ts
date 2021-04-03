@@ -83,17 +83,14 @@ export class VariacionesLaboralesService {
 
     this.data = this.http.post(url, this.prueba, { headers: this.agregarAutorizacionHeader(), params: params });
     this.data.subscribe(data => {
-      this.sleep(5000);
       resolve();
       swal.fire('Variaciones laborales (altas)', '¡El registro fue cargado con éxito!', "success");
     }, err => {
       if (err.status == 400) {
-        this.sleep(5000);
         resolve();
         swal.fire('Variaciones laborales', 'no posee conexión a internet', "error");
       }
       if (err.status == 500) {
-        this.sleep(5000);
         resolve();
         swal.fire('Variaciones laborales', 'Error interno', "error");
       }
@@ -118,7 +115,6 @@ export class VariacionesLaboralesService {
 
     this.data =  this.http.post(url, this.baja, { headers: this.agregarAutorizacionHeader(), params: params });
     this.data.subscribe((data) => {
-      this.sleep(5000);
       resolve();
       swal.fire('Variaciones laborales (bajas)', '¡El registro fue cargado con éxito!', "success");
     }, err => {
@@ -127,7 +123,6 @@ export class VariacionesLaboralesService {
         swal.fire('Variaciones laborales', 'revise su conexión a internet', "error");
       }
       if(err.status == 500){
-        this.sleep(5000);
         resolve();
         swal.fire('Variaciones laborales', 'se ha producido un error', "error");
 
@@ -151,7 +146,7 @@ export class VariacionesLaboralesService {
     this.suspencion.motivo = form.value.motivo;
     this.suspencion.id_tipo_contrato = 1;
     this.suspencion.cantidad = form.value.cantidad;
-    this.suspencion.tipoVariacion = "suspencion";
+    this.suspencion.tipoVariacion = "suspension";
     this.suspencion.fecha = form.value.fecha;
     this.suspencion.descripcion = form.value.observacion;
     let params = new HttpParams().set("contrato", form.value.contrato);
@@ -159,17 +154,14 @@ export class VariacionesLaboralesService {
 
     this.data = this.http.post(url, this.suspencion, { headers: this.agregarAutorizacionHeader(), params: params });
     this.data.subscribe(data => {
-      this.sleep(5000);
       resolve();
       swal.fire('Variaciones laborales (suspensiones)', '¡El registro fue cargado con éxito!', "success");
     }, err => {
       if (err.status == 400) {
-        this.sleep(5000);
         resolve();
         swal.fire('Variaciones laborales', 'no posee conexión a internet', "error");
       }
       if (err.status == 500) {
-        this.sleep(5000);
         resolve();
         swal.fire('Variaciones laborales', 'Error interno', "error");
       }

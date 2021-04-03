@@ -14,7 +14,8 @@
                   monthNames="ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic"
                   monthShortNames="enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre"
                   doneText="aceptar"
-                  cancelText="Cancelar"></ion-datetime>
+                  cancelText="Cancelar"
+                  max ="2025"></ion-datetime>
                 </ion-item>
            <ion-item>
             <ion-label>Cambio respecto a:</ion-label>
@@ -48,7 +49,7 @@
             <ion-textarea  [(ngModel)]="cambio.observacion" name="observacion"></ion-textarea>
           </ion-item>
   
-          <ion-button  expand="block"  fill="outline" type="submit" disabled="{{buttonDisable}}"><ion-spinner paused={{pauseSpiner}}></ion-spinner>Confirmar</ion-button>
+          <ion-button  expand="block"  fill="outline" type="submit" disabled="{{buttonDisable}}">Confirmar <ion-spinner  paused={{pauseSpiner}} *ngIf="buttonDisable" name="crescent"></ion-spinner></ion-button>
     
     
         </form>

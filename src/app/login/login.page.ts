@@ -12,6 +12,8 @@ import { AuthService } from '../service/auth.service';
 
 export class LoginPage implements OnInit {
   usuario: Usuario;
+  public pauseSpiner = true;
+  public buttonDisable = false;
   constructor(private router: Router, public authService: AuthService) {
 
     this.usuario = new Usuario();
@@ -23,6 +25,8 @@ export class LoginPage implements OnInit {
   // en el servicio 'authService'. Si la autenticacion es correcta redirecciona 
   // a la pagina de inicio.
   logIn(): void {
+    this.pauseSpiner = false
+    this.buttonDisable= true;
     authService: AuthService
     if (this.usuario.username == null || this.usuario.password == null) {
       swal.fire('Error Login', 'Username o Password vacio', "error");
@@ -34,11 +38,23 @@ export class LoginPage implements OnInit {
       this.authService.guardarUsuario(response.access_token);
       this.authService.guardarToken(response.access_token);
       let usuario = this.authService.usuario;
+      this.buttonDisable= false;
+      this.pauseSpiner= true; 
       swal.fire('Login', 'Bienvenido, ¡has iniciado sesión con éxito!', "success");
     }, err => {
       if (err.status == 400) {
+        this.buttonDisable= false;
+        this.pauseSpiner= true; 
         swal.fire('Error Login', 'Username o Password incorrecto', "error");
-      }else{
+      }
+      if (err.status == 500) {
+        this.buttonDisable= false;
+        this.pauseSpiner= true; 
+        swal.fire('Error Login', 'error en el servidor', "error");
+      }
+      else{
+        this.buttonDisable= false;
+        this.pauseSpiner= true; 
         console.log("ERROR ", err)
       }
     });
@@ -46,5 +62,9 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
+  sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
 
 }

@@ -44,17 +44,14 @@ export class ConflictosLaboralesService {
 
     this.data = this.http.post(url, this.conflicto, { headers: this.agregarAutorizacionHeader() });
     this.data.subscribe(data => {
-      this.sleep(5000);
       resolve();
       swal.fire('Conflictos laborales', '¡El registro fue cargado con éxito!', "success");
     }, err => {
       if (err.status == 400) {
-        this.sleep(5000);
         resolve();
         swal.fire('Conflictos laborales', 'no posee conexión a internet', "error");
       }
       if (err.status == 500) {
-        this.sleep(5000);
         resolve();
         swal.fire('Conflictos laborales', 'Error interno', "error");
       }
